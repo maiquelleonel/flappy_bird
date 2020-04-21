@@ -142,7 +142,8 @@ while True:
 
     if is_off_screen(ground_group.sprites()[0]):
         ground_group.remove(ground_group.sprites()[0])
-        ground_group.add(Ground(SCREEN_WIDTH - 10))
+        new_ground = Ground(SCREEN_WIDTH - 10)
+        ground_group.add(new_ground)
 
     if is_off_screen(pipe_group.sprites()[0]):
         pipe_group.remove(pipe_group.sprites()[0])
