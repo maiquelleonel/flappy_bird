@@ -1,3 +1,4 @@
+#!/bin/python3
 import pygame
 import random
 from pygame.locals import *
@@ -114,6 +115,7 @@ bird_group.add(bird)
 bg_group = pygame.sprite.Group()
 ground_group = pygame.sprite.Group()
 pipe_group = pygame.sprite.Group()
+
 for i in range(2):
     bg_group.add(Background(SCREEN_WIDTH * i))
     ground_group.add(Ground(SCREEN_WIDTH * i))
@@ -162,10 +164,14 @@ while True:
 
     pygame.display.update()
 
-    if pygame.sprite.groupcollide(
+    collide_ground = pygame.sprite.groupcollide(
         bird_group, ground_group, False, False, pygame.sprite.collide_mask
-    ) or pygame.sprite.groupcollide(
+    )
+
+    collide_pipe = pygame.sprite.groupcollide(
         bird_group, pipe_group, False, False, pygame.sprite.collide_mask
-    ):
+    )
+
+    if collide_ground or collide_pipe:
         input()
         break
